@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#define IP "127.0.0.1"
+#define PORT 1502
+
 static modbus_t* ctx = NULL;
 static modbus_mapping_t* mapping = NULL;
 static int socket = 0;
@@ -17,7 +20,7 @@ static void unload(void)
 
 int main(void)
 {
-	ctx = modbus_new_tcp("127.0.0.1", 1502);
+	ctx = modbus_new_tcp(IP, PORT);
 	mapping = modbus_mapping_new(10,10,10,10);
 	atexit(unload);
 	
